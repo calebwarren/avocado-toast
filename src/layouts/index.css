@@ -20,12 +20,13 @@ a {
   height: 720px;
   background-size: cover;
   background-position: center;
+  position: relative;
 }
 
 .heroGroup {
   margin: 0 auto;
   max-width: 500px;
-  padding: 150px 50px;
+  padding: 180px 50px;
 }
 
 .hero h1 {
@@ -33,16 +34,77 @@ a {
   color: rgb(63, 63, 102);
   font-size: 60px;
   line-height: 1.2px;
+  opacity: 0;
+  animation: HeroAnimation;
+  animation-duration: 1s;
+  animation-delay: .4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .hero p {
   color: rgb(53, 53, 85);
   font-size: 30px;
   line-height: 1.5;
+  opacity: 0;
+  animation: HeroAnimation 1s .5s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .hero a {
   font-size: 17;
   font-weight: 600;
   color: white;
+  transition: .4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 8px 20px 8px 20px;
+  background-color: rgba(225, 225, 225, 0);
+  border-radius: 22px;
+  margin-left: -20px;
+}
+
+.hero a:hover {
+  background-color: rgba(255, 255, 255, .3);
+}
+
+.hero svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+@media (max-width: 640px) {
+  .heroGroup {
+    padding: 120px 20px;
+  }
+  .hero h1 {
+    font-size: 52px;
+  }
+  .hero p {
+    font-size: 26px;
+  }
+
+}
+
+@keyframes HeroAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.hero .Logos {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 40px;
+  margin: 100px 0;
+  justify-items: center;
+}
+
+@media (max-width: 640px) {
+  .hero .Logos {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
